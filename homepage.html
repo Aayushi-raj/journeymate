@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey Mate</title>
+    <link rel="stylesheet" href="home_page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+   
+    <header class="nav-bar">
+        <div>
+            <h1 id="header">Journey Mate</h1>
+            <img id="img" alt="User Profile Icon" src="./components/user-profile-icon-free-vector.jpg" width="60" height="60">  
+            <hr width="100%" size="2" id="line">
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <section class="booking-section">
+        <div class="sidebar">
+            <a href="homepage.html">
+            <button class="sidebar-btn1">
+                <i class="fas fa-plane"></i> Flight
+            </button></a>
+            <a href="train.html">
+                <button class="sidebar-btn2">
+                <i class="fas fa-train"></i> Train
+            </button></a>
+            <button class="sidebar-btn3">
+                <i class="fas fa-taxi"></i> Cab
+            </button>
+            <button class="sidebar-btn4">
+                <i class="fas fa-bus"></i> Bus
+            </button>
+        </div>
+
+        <div class="booking-form">
+            <!-- Trip Selection -->
+            <div class="trip-type">
+                <button class="trip-btn active">One Way</button>
+                <button class="trip-btn">Round Trip</button>
+                <button class="trip-btn">Multicity</button>
+            </div>
+
+            <!-- Flight Search Form -->
+            <div class="flight-search">
+                <div class="form-group">
+                    <label>FROM</label>
+                    <select>
+                        <option value="DEL">Delhi [DEL] Indira Gandhi International Airport</option>
+                        <option value="BOM">Mumbai [BOM] Chhatrapati Shivaji Maharaj International Airport</option>
+                        <option value="BLR">Bangalore [BLR] Kempegowda International Airport</option>
+                        <option value="MAA">Chennai [MAA] Chennai International Airport</option>
+                        <!-- Add more airports as needed -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>TO</label>
+                    <select>
+                        <option value="DEL">Delhi [DEL] Indira Gandhi International Airport</option>
+                        <option value="BOM">Mumbai [BOM] Chhatrapati Shivaji Maharaj International Airport</option>
+                        <option value="BLR">Bangalore [BLR] Kempegowda International Airport</option>
+                        <option value="MAA">Chennai [MAA] Chennai International Airport</option>
+                        <!-- Add more airports as needed -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>DEPARTURE DATE</label>
+                    <input type="date" id="departure-date">
+                </div>
+                <div class="form-group">
+                    <label>RETURN DATE</label>
+                    <input type="date" id="return-date" disabled>
+                </div>
+                <div class="form-group">
+                    <label>TRAVELLER & CLASS</label>
+                    <select>
+                        <option>1 Traveller(s), Economy</option>
+                        <option>2 Traveller(s), Economy</option>
+                        <option>1 Traveller(s), Business</option>
+                        <option>2 Traveller(s), Business</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+                <div class="search-button">
+                    <button>SEARCH</button>
+                </div>
+            </div>
+
+            <!-- User Categories -->
+            <div class="user-categories">
+                <label><input type="radio" name="category"> Defence Forces</label>
+                <label><input type="radio" name="category"> Students</label>
+                <label><input type="radio" name="category"> Senior Citizens</label>
+                <label><input type="radio" name="category"> Doctors Nurses</label>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotions -->
+    <section class="promotions">
+        <div class="promo-card">
+            <img src="./components/image1.jpg" alt="Promo 1">
+            <p class="promo-title">DOMESTIC</p>
+            <p>Farewell Sale for Vistara with fares starting at 1,575/-</p>
+            <a href="https://www.airvistara.com/in/en/travel-information/vistara-exclusives/vistara-direct?gclid=CjwKCAjwreW2BhBhEiwAavLwfEDuBsEZ5YiusrV6w6E9Nu_P0BtQ2nZKvsg3vxbxQDKszdTXszrtVhoCE0wQAvD_BwE:G:s&s_kwcid=AL!596!3!659805002525!p!!g!!tata%20vistara%20airlines&s_kwcid=AL!596!3!659805002525!p!!g!!tata+vistara+airlines&gad_source=1" class="promo-link">
+                BOOK NOW
+            </a>
+        </div>
+
+        <div class="promo-card">
+            <img src="./components/image2.jpg" alt="Promo 2"> 
+            <p class="promo-title">INTL FLIGHTS</p>
+            <p>LIVE NOW: Min. 10% OFF on International Flights, Hotels & Holiday Packages</p>
+            <a href="https://www.makemytrip.com/international-flights/international-flight-offer.html?srsltid=AfmBOoqkY4-QprK0rD_K13SQGI18vk4XMgadIQTV8gXOuwk4Lm8azXqz" class="promo-link">
+                BOOK NOW
+            </a>
+        </div>
+
+        <div class="promo-card">
+            <img src="./components/image3.jpg" alt="Promo 3"> 
+            <p class="promo-title">EXCITING NEWS</p>
+            <p>Book Tickets for Vande Bharat Express with business class for a luxury journey</p>
+            <a href="https://www.irctc.co.in/nget/train-search" class="promo-link">
+                BOOK NOW
+            </a>
+        </div>
+
+        <div class="hero">
+            <div class="form-box">
+                <div class="button-box">
+                    <div id="btn"></div>
+                    <button type="button" class="toggle-btn1" onclick="login()">Sign In</button>
+                    <button type="button" class="toggle-btn2" onclick="register()">Register</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function login() {
+            window.location.href = "signup.html"; 
+        }
+        function register() {
+            window.location.href = "signup.html"; 
+        }
+    </script>
+</body>
+</html>
