@@ -135,6 +135,7 @@ img {
 .booking-section {
     display: flex;
     padding: 20px;
+    padding-left: 5px;
 }
 
 .sidebar {
@@ -144,7 +145,7 @@ img {
     justify-content: space-between;
     padding: 10px;
     border-radius: 10px;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 .sidebar-btn {
