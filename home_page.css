@@ -9,7 +9,9 @@ body {
 
 #header {
     font-family: 'Samarkan', sans-serif;
-    font-size: 32px;
+    font-size: 36px;
+    color: #7fc7d9;
+    
 }
 
 /* Image */
@@ -138,6 +140,7 @@ img {
     display: flex;
     flex-direction: column;
     background-color: #E3F4F3;
+    justify-content: space-between;
     padding: 10px;
     border-radius: 10px;
     margin-right: 20px;
@@ -219,6 +222,38 @@ img {
     border-radius: 5px;
 }
 
+.sidebar-btn1, .sidebar-btn2,.sidebar-btn3, .sidebar-btn4 {
+    border: 1px solid #46c0bc;
+    background: none;
+    font-size: medium;
+    min-width: 80px;
+    min-height: 40px;
+    color: #000000;
+    transition: 0.8s;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.sidebar-btn1:hover,.sidebar-btn2:hover,.sidebar-btn3:hover,.sidebar-btn4:hover {
+    color: #fff;
+    background-color: #5CC2BF;
+    cursor: pointer;
+}
+
+.sidebar-btn1::before, .sidebar-btn2::before,.sidebar-btn3::before, .sidebar-btn4::before {
+    content: "";
+    z-index: -1;
+    color: #fff;
+    background-color: #3498db;
+    transition: 0.8s;
+    top: 0;
+    border-radius: 0 0 50% 50%;
+}
+
+.sidebar-btn1:hover::before, .sidebar-btn2:hover::before, .sidebar-btn3:hover::before, .sidebar-btn4:hover::before{
+    height: 180%;
+} 
+
 /* User Categories */
 .user-categories {
     display: flex;
@@ -235,6 +270,13 @@ img {
 .promotions {
     display: flex;
     padding: 20px;
+}
+
+.prom{
+    margin-top: 60px; 
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
 }
 
 .promo-card {
@@ -347,7 +389,7 @@ img {
 .sidebar button:hover {
     background-color: #5CC2BF;
     color: white;
-}
+    }
 
 
     
@@ -365,7 +407,7 @@ img {
     }
 
     .flight-search {
-        flex-direction: column;
+        flex-direction: row;
     }
 
     .form-group {

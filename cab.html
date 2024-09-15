@@ -1,0 +1,340 @@
+<html>
+<head>
+    <title>Journey Mate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.cdnfonts.com/css/samarkan" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Petrona:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        .logo {
+            font-size: 36px;
+            color: #7fc7d9;
+            font-family: 'Samarkan', sans-serif;
+        }
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .auth-buttons button {
+            background-color: #92D1D4;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            color: #fff;
+            font-family: 'Anonymous Pro', monospace;
+            border-radius: 5px; /* Adjusted to match the screenshot */
+        }
+        .auth-buttons button:hover {
+            background-color: #7fc7d9;
+            color: #fff;
+        }
+        .auth-buttons .register {
+            background-color: #e6f7f9;
+            color: #92D1D4;
+        }
+        .profile-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #000;
+            font-size: 18px;
+            margin-left: 10px;
+            border: 1px solid #000;
+        }
+        .sidebar {
+            width: 80px;
+            background-color: #7fc7d9;
+            padding: 20px 0;
+            position: fixed;
+            top: 100px; /* Adjusted to be below the header */
+            height: auto; /* Adjusted to fit content */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            border-radius: 20px;
+            margin-left: 20px; /* Adjusted margin */
+            font-family: 'IBM Plex Mono', monospace; /* Changed font to IBM Plex Mono */
+        }
+        .sidebar .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #000; /* Changed to black */
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .sidebar .menu-item.active {
+            background-color: #d3f0f4;
+            color: #000;
+            padding: 10px 0;
+            width: 60px; /* Reduced width */
+            text-align: center;
+            border-radius: 10px;
+        }
+        .content {
+            margin-left: 120px; /* Adjusted margin */
+            padding: 20px;
+            margin-top: 80px; /* Adjusted to be below the header */
+        }
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .tabs .tab {
+            padding: 10px 20px;
+            background-color: #a0b0b9;
+            color: #fff;
+            cursor: pointer;
+        }
+        .tabs .tab.active {
+            background-color: #7fc7d9;
+        }
+        .search-section {
+            background-color: #7fc7d9;
+            padding: 40px 20px 60px 20px; /* Increased padding to make the rectangle bigger */
+            display: flex;
+            align-items: center;
+            gap: 20px; /* Increased gap between elements */
+            position: relative;
+        }
+        .search-section input {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            width: 200px;
+            position: relative;
+            font-family: 'Petrona', serif; /* Changed font to Petrona */
+            text-align: center; /* Center aligned text */
+        }
+        .search-section .input-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .search-section .input-container i {
+            margin: 0 5px;
+            color: #000;
+        }
+        .search-section button {
+            background-color: #1a3b5d;
+            color: #fff;
+            border: none;
+            padding: 10px 40px; /* Elongated the button */
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 40px; /* Moved the button further rightwards */
+        }
+        .search-section .icon {
+            font-size: 20px;
+            color: #000;
+        }
+        .menu-item i {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .car-icon {
+            font-size: 24px;
+            color: #000;
+        }
+        .line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: #000;
+            z-index: -1;
+        }
+        .statistics {
+            margin-top: 60px; /* Increased margin to move it downward */
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        .stat-item {
+            background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+    margin-right: 50px;
+    text-align: center;
+        }
+        .stat-item h3 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+        .stat-item p {
+            margin: 5px 0 0;
+            font-size: 16px;
+            color: #666;
+        }
+        .stat-item img {
+            height: 110px;
+    width: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+        }
+        .line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: #000;
+            z-index: -1;
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            background-color: #E3F4F3;
+            justify-content: space-between;
+            padding: 10px;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+        
+        .sidebar-btn {
+            background-color: #D5EAE9;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px 0;
+            cursor: pointer;
+            text-align: left;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        
+        .sidebar-btn.active {
+            background-color: #5CC2BF;
+            color: white;
+        }
+        
+        .sidebar-btn1, .sidebar-btn2,.sidebar-btn3, .sidebar-btn4 {
+            border: 1px solid #46c0bc;
+            background: none;
+            font-size: medium;
+            min-width: 80px;
+            min-height: 40px;
+            color: #000000;
+            transition: 0.8s;
+            overflow: hidden;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+        .sidebar-btn1:hover,.sidebar-btn2:hover,.sidebar-btn3:hover,.sidebar-btn4:hover {
+            color: #fff;
+            background-color: #5CC2BF;
+            cursor: pointer;
+        }
+        
+        .sidebar-btn1::before, .sidebar-btn2::before,.sidebar-btn3::before, .sidebar-btn4::before {
+            content: "";
+            z-index: -1;
+            color: #fff;
+            background-color: #3498db;
+            transition: 0.8s;
+            top: 0;
+            border-radius: 0 0 50% 50%;
+        }
+        
+        .sidebar-btn1:hover::before, .sidebar-btn2:hover::before, .sidebar-btn3:hover::before, .sidebar-btn4:hover::before{
+            height: 180%;
+        } 
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">journey mate</div>
+        <div class="auth-buttons">
+            <button>SIGN IN</button>
+            <button class="register">REGISTER</button>
+            <img id="img" alt="User Profile Icon" src="./components/user-profile-icon-free-vector.jpg" width="60" height="60">  
+            
+        </div>
+    </div>
+    <div class="sidebar">
+        <a href="homepage.html">
+        <button class="sidebar-btn1">
+            <i class="fas fa-plane"></i> Flight
+        </button></a>
+        <a href="train.html">
+            <button class="sidebar-btn2">
+            <i class="fas fa-train"></i> Train
+        </button></a>
+        <a href="cab.html">
+        <button class="sidebar-btn3">
+            <i class="fas fa-taxi"></i> Cab
+        </button></a>
+        <button class="sidebar-btn4">
+            <i class="fas fa-bus"></i> Bus
+        </button>
+    </div>
+
+    <div class="content">
+        <div class="tabs">
+            <div class="tab active">Daily</div>
+            <div class="tab">Outstation</div>
+            <div class="tab">Rentals</div>
+        </div>
+        <div class="search-section">
+            <div class="input-container">
+                <i class="fas fa-male"></i>
+                <input type="text" placeholder="Enter Pick-Up Location">
+                <i class="fas fa-crosshairs"></i>
+            </div>
+            <div class="line"></div>
+            <div class="icon"><i class="fas fa-taxi car-icon"></i></div>
+            <div class="input-container">
+                <i class="fas fa-home"></i>
+                <input type="text" placeholder="Enter Destination">
+            </div>
+            <button>SEARCH</button>
+        </div>
+        <div class="statistics">
+            <div class="stat-item">
+                <img alt="Rides Completed Icon" src="components/cabpg2.jpg" width="150" height="150">
+                <h3>1,000+</h3>
+                <p>Rides Completed</p>
+            </div>
+            <div class="stat-item">
+                <img alt="Happy Customers Icon" src="components/cabpg1.jpg" width="150" height="150">
+                <h3>750+</h3>
+                <p>Happy Customers</p>
+            </div>
+            <div class="stat-item">
+                <img alt="Available Cabs Icon" src="components/cabpg3.jpg" width="150" height="150">
+                <h3>100+</h3>
+                <p>Available Cabs</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
