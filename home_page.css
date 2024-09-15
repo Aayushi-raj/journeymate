@@ -293,6 +293,7 @@ img {
     flex-grow: 1;
     margin-right: 50px;
     text-align: center;
+    width: 400px;
 }
 
 .promo-card img {
@@ -308,6 +309,7 @@ img {
     color: #000000;
     margin-bottom: 10px;
     font-weight: 800;
+    overflow-wrap: break-word;
 }
 
 .promo-link {

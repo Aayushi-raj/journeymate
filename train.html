@@ -1,1 +1,350 @@
-<h1>train page</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey Mate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.cdnfonts.com/css/samarkan" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        .logo {
+            font-size: 36px;
+            color: #7fc7d9;
+            font-family: 'Samarkan', sans-serif;
+        }
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .auth-buttons button {
+            background-color: #92D1D4;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            border-radius: 5px;
+        }
+        .auth-buttons button:hover {
+            background-color: #7fc7d9;
+            color: #fff;
+        }
+        .auth-buttons .register {
+            background-color: #e6f7f9;
+            color: #92D1D4;
+        }
+        .sidebar {
+            width: 80px;
+            background-color: #7fc7d9;
+            padding: 20px 0;
+            position: fixed;
+            top: 100px;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            border-radius: 20px;
+            margin-left: 20px;
+        }
+        .sidebar .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #000;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .sidebar .menu-item.active {
+            background-color: #d3f0f4;
+            color: #000;
+            padding: 10px 0;
+            width: 60px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .content {
+            margin-left: 120px;
+            padding: 20px;
+            margin-top: 80px;
+        }
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .tabs .tab {
+            padding: 10px 20px;
+            background-color: #7fc7d9;
+            color: #fff;
+            cursor: pointer;
+        }
+        .tabs .tab.active {
+            background-color: #a0b0b9;
+        }
+        .search-section {
+            background-color: #f7f7f7;
+            padding: 20px;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 20px;
+        }
+        .search-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .input-container {
+            display: flex;
+            align-items: center;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+            flex: 1;
+        }
+        .input-container input {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            background: transparent;
+            width: 100%;
+        }
+        .input-container .icon {
+            font-size: 20px;
+            color: #7fc7d9;
+            margin-right: 10px;
+        }
+        .opt-in-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 200px;
+        }
+        .opt-in label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 14px;
+            text-align: center;
+        }
+        .opt-in input {
+            margin-top: 5px;
+        }
+        .search-section button {
+            background-color: #7fc7d9; /* Updated color */
+            color: #fff;
+            border: none;
+            padding: 10px 40px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .info-section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .info-section h2 {
+            color: #e53935;
+            margin-bottom: 10px;
+        }
+        .info-section .info-items {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .info-section .info-item {
+            text-align: center;
+        }
+        .info-section .info-item i {
+            font-size: 24px;
+            color: #00796b;
+            margin-bottom: 10px;
+        }
+
+        #calendar-icon {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">journey mate</div>
+        <div class="auth-buttons">
+            <button>SIGN IN</button>
+            <button class="register">REGISTER</button>
+            <div class="profile-icon"><i class="fas fa-user"></i></div>
+        </div>
+    </div>
+    
+    <div class="sidebar">
+        <a href="homepage.html">
+        <button class="sidebar-btn1">
+            <i class="fas fa-plane"></i> Flight
+        </button></a>
+        <a href="train.html">
+            <button class="sidebar-btn2">
+            <i class="fas fa-train"></i> Train
+        </button></a>
+        <a href="cab.html">
+        <button class="sidebar-btn3">
+            <i class="fas fa-taxi"></i> Cab
+        </button></a>
+        <button class="sidebar-btn4">
+            <i class="fas fa-bus"></i> Bus
+        </button>
+    </div>
+    
+    <div class="content">
+        <div class="tabs">
+            <div class="tab active">Book Train Tickets</div>
+            <div class="tab">Check PNR Status</div>
+            <div class="tab">Live Train Status</div>
+        </div>
+        
+        <div class="search-section">
+            <div class="search-box">
+                <div class="input-container">
+                    <i class="fas fa-map-marker-alt icon"></i>
+                    <input id="from-input" type="text" placeholder="From">
+                </div>
+                <i class="fas fa-exchange-alt"></i>
+                <div class="input-container">
+                    <i class="fas fa-map-marker-alt icon"></i>
+                    <input type="text" placeholder="To">
+                </div>
+                <div class="input-container">
+                    <i class="fas fa-calendar-alt icon" id="calendar-icon"></i>
+                    <input id="date-input" type="text" placeholder="Thu, 15 Aug 2024">
+                </div>
+            </div>
+            
+            <div class="opt-in-box">
+                <label>
+                    <strong>FREE</strong><br>CANCELATION
+                    <input type="checkbox">
+                </label>
+                <label>
+                    <strong>Zero Cancellation</strong>
+                    <br>Instant Refund
+                </label>
+            </div>
+            
+            <button>SEARCH</button>
+        </div>
+    </div>
+
+    <div class="info-section">
+        <h2>
+         IRCTC authorised Ticket Booking
+        </h2>
+        <p>
+         Book IRCTC Train Tickets on redRail and enjoy simple &amp; superfast booking process with no service fee + no payment gateway charge.
+        </p>
+        <div class="info-items">
+         <div class="info-item">
+          <i class="fas fa-handshake">
+          </i>
+          <p>
+           IRCTC Authorised Partner
+          </p>
+          <p>
+           Book your train tickets with confidence
+          </p>
+         </div>
+         <div class="info-item">
+          <i class="fas fa-rupee-sign">
+          </i>
+          <p>
+           Instant refunds on UPI payments
+          </p>
+          <p>
+           Get Instant Refunds on your UPI payments
+          </p>
+         </div>
+         <div class="info-item">
+          <i class="fas fa-headset">
+          </i>
+          <p>
+           Hassle free customer care
+          </p>
+          <p>
+           Get dedicated customer support for all your queries
+          </p>
+         </div>
+         <div class="info-item">
+          <i class="fas fa-check-circle">
+          </i>
+          <p>
+           Fastest confirmed booking experience
+          </p>
+         </div>
+        </div>
+       </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $("#from-input").autocomplete({
+                source: function(request, response) {
+                    $.ajax({
+                        url: "https://api.example.com/train-stations", // Replace with your API endpoint
+                        dataType: "json",
+                        data: {
+                            term: request.term
+                        },
+                        success: function(data) {
+                            response(data.stations); // Adjust based on your API response
+                        }
+                    });
+                },
+                minLength: 2 // Minimum length of query before suggestion starts
+            });
+
+            $("#date-input").datepicker({
+                dateFormat: "D, dd M yy", // Adjust the format as needed
+                onSelect: function(dateText) {
+                    $("#date-input").val(dateText);
+                }
+            });
+
+            $("#calendar-icon").click(function() {
+                $("#date-input").focus();
+            });
+        });
+    </script>
+</body>
+</html>
