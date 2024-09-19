@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey Mate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.cdnfonts.com/css/samarkan" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff; /* Updated background color */
+        }
+        
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        .logo {
+            font-size: 36px;
+            color: #5cc2bf; /* Updated color */
+            font-family: 'Samarkan', sans-serif;
+        }
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .auth-buttons button {
+            background-color: #5cc2bf; /* Updated color */
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            border-radius: 5px;
+        }
+        .auth-buttons button:hover {
+            background-color: #319795; /* Updated hover color */
+            color: #fff;
+        }
+        .auth-buttons .register {
+            background-color: #e3f7f7;
+            color: #5cc2bf; /* Updated color */
+        }
+        .sidebar {
+            display:inline-flex;
+            flex-direction: column;
+            background-color: #fff;
+            justify-content: space-between;
+            padding: 18px;
+            border-radius: 10px;
+            margin-right: 20px;
+            width: 85px;
+            background-color: #D5EAE9;
+            border: none;
+            padding: 10px 20px;
+            margin: 50px 0;
+            cursor: pointer;
+            text-align: left;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        
+        .sidebar-btn {
+            background-color: #D5EAE9;
+            border: none;
+            padding: 10px 20px;
+            margin: 50px 0;
+            cursor: pointer;
+            text-align: left;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        
+        .sidebar-btn.active {
+            background-color: #5CC2BF;
+            color: white;
+        }
+        
+        .sidebar-btn1, .sidebar-btn2,.sidebar-btn3, .sidebar-btn4 {
+            border: 1px solid #46c0bc;
+            background: none;
+            font-size: medium;
+            min-width: 80px;
+            min-height: 40px;
+            color: #000000;
+            transition: 0.8s;
+            overflow: hidden;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+        .sidebar-btn1:hover,.sidebar-btn2:hover,.sidebar-btn3:hover,.sidebar-btn4:hover {
+            color: #fff;
+            background-color: #5CC2BF;
+            cursor: pointer;
+        }
+        
+        .sidebar-btn1::before, .sidebar-btn2::before,.sidebar-btn3::before, .sidebar-btn4::before {
+            content: "";
+            z-index: -1;
+            color: #fff;
+            background-color: #3498db;
+            transition: 0.8s;
+            top: 0;
+            border-radius: 0 0 50% 50%;
+        }
+        
+        .sidebar-btn1:hover::before, .sidebar-btn2:hover::before, .sidebar-btn3:hover::before, .sidebar-btn4:hover::before{
+            height: 180%;
+        }  
+        .content {
+            display:inline-flex;
+            flex-direction: column;
+            margin-left: 120px;
+            padding: 30px;
+            margin-bottom: 100px;
+            position: relative;
+        }
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .tabs .tab {
+            padding: 10px 20px;
+            background-color: #5cc2bf; /* Updated color */
+            color: #fff;
+            cursor: pointer;
+        }
+        .tabs .tab.active {
+            background-color: #319795; /* Updated active tab color */
+        }
+        .search-section {
+            background-color: #f7f7f7;
+            padding: 20px;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 20px;
+        }
+        .search-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .input-container {
+            display: flex;
+            align-items: center;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+            flex: 1;
+        }
+        .input-container input {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            background: transparent;
+            width: 100%;
+        }
+        .input-container .icon {
+            font-size: 20px;
+            color: #5cc2bf; /* Updated color */
+            margin-right: 10px;
+        }
+        .opt-in-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 200px;
+        }
+        .opt-in label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 14px;
+            text-align: center;
+        }
+        .opt-in input {
+            margin-top: 5px;
+        }
+        .search-section button {
+            background-color: #5cc2bf; /* Updated color */
+            color: #fff;
+            border: none;
+            padding: 10px 40px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .calendar-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .calendar-dropdown select {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .content .govt-buses {
+            margin-top: 120px;
+            text-align: center;
+        }
+        .content .govt-buses .title {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .content .govt-buses .bus-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: nowrap; /* Changed to nowrap */
+            overflow-x: auto; /* Added horizontal scroll */
+        }
+        .content .govt-buses .bus-item {
+            text-align: center;
+            min-width: 100px; /* Ensures items are not too small */
+        }
+        .content .govt-buses .bus-item img {
+            width: 50px;
+            height: 50px;
+        }
+        .content .govt-buses .bus-item .name {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .content .govt-buses .bus-item .description {
+            font-size: 14px;
+            color: #666;
+        }
+        .bus-item {
+            display: inline-block;
+            gap: 30px;
+            padding: 2%;
+        }
+        .title {
+            padding-top: 2%;
+            padding-left: 45%;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">journey mate</div>
+        <div class="auth-buttons">
+            <button>SIGN IN</button>
+            <button class="register">REGISTER</button>
+            <div class="profile-icon"><i class="fas fa-user"></i></div>
+        </div>
+    </div>
+    
+    <div class="sidebar">
+       
+        <a href="homepage.html">
+        <button class="sidebar-btn1">
+            <i class="fas fa-plane"></i> Flight
+        </button></a>
+        <a href="train.html">
+            <button class="sidebar-btn2">
+            <i class="fas fa-train"></i> Train
+        </button></a>
+        <a href="cab.html">
+        <button class="sidebar-btn3">
+            <i class="fas fa-taxi"></i> Cab
+        </button></a>
+        <a href="bus.html">
+            <button class="sidebar-btn4">
+                <i class="fas fa-bus"></i> Bus
+            </button></a>
+        </div>
+    
+    </div>
+    
+    <div class="content">
+        <div class="tabs">
+            <div class="tab active">Book Bus Tickets</div>
+        </div>
+        
+        <div class="search-section">
+            <div class="search-box">
+                <div class="input-container">
+                    <i class="fas fa-map-marker-alt icon"></i>
+                    <input id="from-input" type="text" placeholder="From">
+                </div>
+                <i class="fas fa-exchange-alt"></i>
+                <div class="input-container">
+                    <i class="fas fa-map-marker-alt icon"></i>
+                    <input type="text" placeholder="To">
+                </div>
+                <div class="input-container calendar-dropdown">
+                    <i class="fas fa-calendar-alt icon" id="calendar-icon"></i>
+                    <select id="date-selector">
+                        <option value="today">Today</option>
+                        <option value="tomorrow">Tomorrow</option>
+                    </select>
+                </div>
+            </div>
+            <div class="opt-in-box">
+                <div class="opt-in">
+                    <label for="opt-in">
+                        <span>Get Offers & Updates</span>
+                        <input type="checkbox" id="opt-in">
+                    </label>
+                </div>
+                <button>Search Bus</button>
+            </div>
+        </div>
+        
+        <div class="govt-buses">
+            <div class="title">Government Buses</div>
+            <div class="bus-list">
+                <div class="bus-item">
+                    <img src="./components/bus1.png" alt="Bus 1">
+                    <div class="name">Bus 1</div>
+                    <div class="description">Comfortable & On-time</div>
+                </div>
+                <div class="bus-item">
+                    <img src="./components/bus2.png" alt="Bus 2">
+                    <div class="name">Bus 2</div>
+                    <div class="description">AC Bus, Luxury</div>
+                </div>
+                <div class="bus-item">
+                    <img src="./components/bus3.png" alt="Bus 3">
+                    <div class="name">Bus 3</div>
+                    <div class="description">Affordable Rates</div>
+                </div>
+                <div class="bus-item">
+                    <img src="./components/bus4.png" alt="Bus 3">
+                    <div class="name">Bus 4</div>
+                    <div class="description">Affordable Rates</div>
+                </div>
+                <div class="bus-item">
+                    <img src="./components/bus5.png" alt="Bus 3">
+                    <div class="name">Bus 5</div>
+                    <div class="description">Affordable Rates</div>
+                </div>
+                <div class="bus-item">
+                    <img src="./components/bus6.png" alt="Bus 3">
+                    <div class="name">Bus 6</div>
+                    <div class="description">Affordable Rates</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $("#date-selector").on("change", function() {
+                let selectedDate = $(this).val();
+                let today = new Date();
+                let tomorrow = new Date();
+                tomorrow.setDate(today.getDate() + 1);
+                if (selectedDate === "today") {
+                    $("#date-input").val(today.toISOString().split("T")[0]);
+                } else if (selectedDate === "tomorrow") {
+                    $("#date-input").val(tomorrow.toISOString().split("T")[0]);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
