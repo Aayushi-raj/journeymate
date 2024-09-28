@@ -3,11 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Journey Mate</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://fonts.cdnfonts.com/css/samarkan" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -15,7 +12,11 @@
             padding: 0;
             background-color: #fff; /* Updated background color */
         }
-        
+        #img {
+            position: absolute;
+            top: 19px;
+            right: 20px;
+        }
         
         .header {
             display: flex;
@@ -23,59 +24,64 @@
             align-items: center;
             padding: 10px 20px;
             border-bottom: 1px solid #ccc;
+            font-family: 'Samarkan', sans-serif;
+    font-size: 36px;
+    color: #7fc7d9;
         }
         .logo {
             font-size: 36px;
             color: #5cc2bf; /* Updated color */
             font-family: 'Samarkan', sans-serif;
         }
-        .auth-buttons {
+        .button-box{
             display: flex;
             gap: 10px;
             align-items: center;
         }
-        .auth-buttons button {
-            background-color: #5cc2bf; /* Updated color */
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            color: #fff;
-            font-family: 'Inter', sans-serif;
-            border-radius: 5px;
-        }
-        .auth-buttons button:hover {
+      
+        .button-box .toggle-btn1:hover {
             background-color: #319795; /* Updated hover color */
             color: #fff;
         }
-        .auth-buttons .register {
-            background-color: #e3f7f7;
-            color: #5cc2bf; /* Updated color */
+        .button-box .toggle-btn2:hover {
+            background-color: #319795; /* Updated hover color */
+            color: #fff;
         }
+        .sidebar button.active {
+            background-color: #5CC2BF; /* or your preferred highlight color */
+            color: white;
+        }
+        
+        .sidebar button.active i {
+            color: white;
+        }
+        
         .sidebar {
             display:inline-flex;
             flex-direction: column;
             background-color: #fff;
             justify-content: space-between;
-            padding: 18px;
+            padding: 10px;
             border-radius: 10px;
-            margin-right: 20px;
-            width: 85px;
+            margin-left: 10px; /* Distance between sidebar and left end of the screen */
+            width: 80px;
+            height: 200px;
             background-color: #D5EAE9;
             border: none;
-            padding: 10px 20px;
-            margin: 50px 0;
+           
+            margin-top: 50px; /* Keep the distance from the top */
             cursor: pointer;
             text-align: left;
             font-weight: bold;
-            border-radius: 5px;
+            border-radius: 10px;
+            margin-right: 10px;
         }
         
         .sidebar-btn {
             background-color: #D5EAE9;
             border: none;
             padding: 10px 20px;
-            margin: 50px 0;
+            margin: 0 0 15px 0; /* Add bottom margin to create space between buttons */
             cursor: pointer;
             text-align: left;
             font-weight: bold;
@@ -119,12 +125,16 @@
             height: 180%;
         }  
         .content {
-            display:inline-flex;
+            display: inline-flex;
             flex-direction: column;
-            margin-left: 120px;
-            padding: 30px;
-            margin-bottom: 100px;
-            position: relative;
+            margin-left: 8px;
+            padding: 50px;
+            margin-top: 0; /* Ensure the content is aligned with the sidebar */
+            position: absolute;
+        }
+        .content .govt-buses {
+            margin-top: 0; /* Remove any extra space above the government buses section */
+            text-align: center;
         }
         .tabs {
             display: flex;
@@ -221,56 +231,106 @@
             font-size: 16px;
         }
 
-        .content .govt-buses {
-            margin-top: 120px;
-            text-align: center;
-        }
-        .content .govt-buses .title {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-        .content .govt-buses .bus-list {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: nowrap; /* Changed to nowrap */
-            overflow-x: auto; /* Added horizontal scroll */
-        }
-        .content .govt-buses .bus-item {
-            text-align: center;
-            min-width: 100px; /* Ensures items are not too small */
-        }
-        .content .govt-buses .bus-item img {
-            width: 50px;
-            height: 50px;
-        }
-        .content .govt-buses .bus-item .name {
-            font-size: 16px;
-            margin-top: 10px;
-        }
-        .content .govt-buses .bus-item .description {
-            font-size: 14px;
-            color: #666;
-        }
-        .bus-item {
-            display: inline-block;
-            gap: 30px;
-            padding: 2%;
-        }
+        
+        
         .title {
-            padding-top: 2%;
-            padding-left: 45%;
+            justify-content: center;
+            padding: 10px;
+            font-family: 'Cooper Black', sans-serif;
+            margin: 90px;
+            margin-left: 20px;
+            padding: 0;
+            background-color: #fff;
+            font-weight: bold; /* Make the text bold */
+            color: #000; 
+            font-size: 40px;
         }
+        .prom{
+            margin-top: 60px; 
+                    display: flex;
+                    justify-content: space-around;
+                    text-align: center;
+        }
+        
+        .promo-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex-grow: 1;
+            margin-right: 20px;
+            text-align: center;
+            width: 70px;
+            height: 250px;
+        }
+        
+        .promo-card img {
+            height: 50px;
+            width: 55px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .promo-title {
+            font-size: 19px;
+            color: #000000;
+            margin-bottom: 10px;
+            font-weight: 800;
+            overflow-wrap: break-word;
+        }
+        
+        .promo-link {
+            color: #5CC2BF;
+            font-weight: bold;
+        }
+
+        .toggle-btn1,
+.toggle-btn2 {
+    padding: 10px 30px;
+    cursor: pointer;
+    color: #319795;
+    border: 1px solid #319795;
+    background-color: #fff;
+    
+    border-radius: 0.25rem;
+    position: absolute;
+    top: 40px;
+}
+
+.toggle-btn1 {
+    right: 250px;
+}
+
+.toggle-btn2 {
+    right: 110px;
+}
     </style>
 </head>
 <body>
     <div class="header">
         <div class="logo">journey mate</div>
-        <div class="auth-buttons">
-            <button>SIGN IN</button>
-            <button class="register">REGISTER</button>
-            <div class="profile-icon"><i class="fas fa-user"></i></div>
+        <img id="img" alt="User Profile Icon" src="./components/user-profile-icon-free-vector.jpg" width="60" height="60">  
+            
+        <div class="hero">
+            <div class="form-box">
+                <div class="button-box">
+                    <div id="btn"></div>
+                    <button type="button" class="toggle-btn1" onclick="login()">Sign In</button>
+                    <button type="button" class="toggle-btn2" onclick="register()">Register</button>
+                </div>
+            </div>
         </div>
+    </section>
+
+    <script>
+        function login() {
+            window.location.href = "signup.html"; 
+        }
+        function register() {
+            window.location.href = "signup.html"; 
+        }
+    </script>
     </div>
     
     <div class="sidebar">
@@ -288,7 +348,7 @@
             <i class="fas fa-taxi"></i> Cab
         </button></a>
         <a href="bus.html">
-            <button class="sidebar-btn4">
+            <button class="sidebar-btn4 active">
                 <i class="fas fa-bus"></i> Bus
             </button></a>
         </div>
@@ -329,43 +389,65 @@
                 <button>Search Bus</button>
             </div>
         </div>
+        </div>
         
         <div class="govt-buses">
-            <div class="title">Government Buses</div>
-            <div class="bus-list">
-                <div class="bus-item">
-                    <img src="./components/bus1.png" alt="Bus 1">
-                    <div class="name">Bus 1</div>
-                    <div class="description">Comfortable & On-time</div>
+            <div class="title">GOVERNMENT BUSES</div>
+            <div class="prom">
+                <div class="promo-card">
+                    <img src="./components/bus1.png" alt="Promo 2"> 
+                    <h1 class="promo-title">APSRTC Buses</h1>
+                    <p>1539 services including Garuda, Garuda Plus and more</p>
+                    <a href="https://www.redbus.in/bus-tickets/hyderabad-to-vijayawada?fromCityId=124&toCityId=134&fromCityName=Hyderabad&toCityName=Vijayawada&busType=Any&srcCountry=IND&destCountry=IND&onward=20-Sep-2024" class="promo-link">
+                        BOOK NOW
+                    </a>
                 </div>
-                <div class="bus-item">
-                    <img src="./components/bus2.png" alt="Bus 2">
-                    <div class="name">Bus 2</div>
-                    <div class="description">AC Bus, Luxury</div>
+                <div class="promo-card">
+                    <img src="./components/bus2.png" alt="Promo 2"> 
+                    <h1 class="promo-title">
+                        TSRTC Buses</h1>
+                    <p>480 services including Himgaurav, Himmani and more</p>
+                    <a href="https://www.redbus.in/bus-tickets/hyderabad-to-vijayawada?fromCityId=124&toCityId=134&fromCityName=Hyderabad&toCityName=Vijayawada&busType=Any&srcCountry=IND&destCountry=IND&onward=20-Sep-2024" class="promo-link">
+                        BOOK NOW
+                    </a>
                 </div>
-                <div class="bus-item">
-                    <img src="./components/bus3.png" alt="Bus 3">
-                    <div class="name">Bus 3</div>
-                    <div class="description">Affordable Rates</div>
+                <div class="promo-card">
+                    <img src="./components/bus3.png" alt="Promo 2"> 
+                    <h1 class="promo-title">Kerala RTC</h1>
+                    <p>11450 services including Garuda Plus, Rajdhani and more</p>
+                    <a href="https://www.redbus.in/bus-tickets/hyderabad-to-vijayawada?fromCityId=124&toCityId=134&fromCityName=Hyderabad&toCityName=Vijayawada&busType=Any&srcCountry=IND&destCountry=IND&onward=20-Sep-2024" class="promo-link">
+                        BOOK NOW
+                    </a>
                 </div>
-                <div class="bus-item">
-                    <img src="./components/bus4.png" alt="Bus 3">
-                    <div class="name">Bus 4</div>
-                    <div class="description">Affordable Rates</div>
+                <div class="promo-card">
+                    <img src="./components/bus4.png" alt="Promo 2"> 
+                    <h1 class="promo-title">
+                        KTCL</h1>
+                    <p>6000 services including Deluxe, Ordinary and more</p>
+                    <a href="https://www.redbus.in/bus-tickets/hyderabad-to-vijayawada?fromCityId=124&toCityId=134&fromCityName=Hyderabad&toCityName=Vijayawada&busType=Any&srcCountry=IND&destCountry=IND&onward=20-Sep-2024" class="promo-link">
+                        BOOK NOW
+                    </a>
                 </div>
-                <div class="bus-item">
-                    <img src="./components/bus5.png" alt="Bus 3">
-                    <div class="name">Bus 5</div>
-                    <div class="description">Affordable Rates</div>
+                <div class="promo-card">
+                    <img src="./components/bus5.png" alt="Promo 2"> 
+                    <h1 class="promo-title">
+                        RSRTC</h1>
+                    <p>1539 services including Garuda, Garuda Plus and more</p>
+                    <a href="https://www.redbus.in/bus-tickets/hyderabad-to-vijayawada?fromCityId=124&toCityId=134&fromCityName=Hyderabad&toCityName=Vijayawada&busType=Any&srcCountry=IND&destCountry=IND&onward=20-Sep-2024" class="promo-link">
+                        BOOK NOW
+                    </a>
                 </div>
-                <div class="bus-item">
-                    <img src="./components/bus6.png" alt="Bus 3">
-                    <div class="name">Bus 6</div>
-                    <div class="description">Affordable Rates</div>
+                <div class="promo-card">
+                    <img src="./components/bus6.png" alt="Promo 2"> 
+                    <h1 class="promo-title">UPSRTC</h1>
+                    <p>1738 services including Janrath,Shatabdi and more</p>
+                    <a href="https://www.redbus.in/bus-tickets/hyderabad-to-vijayawada?fromCityId=124&toCityId=134&fromCityName=Hyderabad&toCityName=Vijayawada&busType=Any&srcCountry=IND&destCountry=IND&onward=20-Sep-2024" class="promo-link">
+                        BOOK NOW
+                    </a>
                 </div>
             </div>
         </div>
-    </div>
+   
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -383,6 +465,19 @@
                 }
             });
         });
+    </script>
+    <script>
+        window.onload = function() {
+            const currentPage = window.location.pathname.split("/").pop();
+            const sidebarButtons = document.querySelectorAll('.sidebar button');
+        
+            sidebarButtons.forEach(button => {
+                if (button.closest('a').getAttribute('href') === currentPage) {
+                    button.classList.add('active');
+                }
+            });
+        };
+        
     </script>
 </body>
 </html>

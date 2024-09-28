@@ -137,7 +137,14 @@ img {
     padding: 20px;
     padding-left: 5px;
 }
+.sidebar button.active {
+    background-color: #5CC2BF; /* or your preferred highlight color */
+    color: white;
+}
 
+.sidebar button.active i {
+    color: white;
+}
 .sidebar {
     display: flex;
     flex-direction: column;

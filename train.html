@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Journey Mate</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://fonts.cdnfonts.com/css/samarkan" rel="stylesheet">
+   
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <style>
@@ -13,7 +13,16 @@
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #e3f4f3;
+            background-color: #f1f5f5;
+        }
+        #img{
+            
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            
         }
         .header {
             display: flex;
@@ -27,63 +36,128 @@
             color: #5cc2bf;
             font-family: 'Samarkan', sans-serif;
         }
-        .auth-buttons {
+        .button-box{
             display: flex;
-            gap: 10px;
-            align-items: center;
+            gap: 90px;
+            align-items:left;
+           
+
         }
-        .auth-buttons button {
-            background-color: #5cc2bf;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
+       
+        .button-box .toggle-btn1:hover {
+            background-color: #319795; /* Updated hover color */
+            color: #fff;
+        }
+        .button-box .toggle-btn2:hover {
+            background-color: #319795; /* Updated hover color */
+            color: #fff;
+        }
+        .toggle-btn1,
+        .toggle-btn2 {
+            padding: 10px 30px;
             cursor: pointer;
-            color: #fff;
-            font-family: 'Inter', sans-serif;
-            border-radius: 5px;
+            color: #319795;
+            border: 1px solid #319795;
+            background-color: #fff;
+            
+            border-radius: 0.25rem;
+            position: absolute;
+            top: 40px;
         }
-        .auth-buttons button:hover {
-            background-color: #319795;
-            color: #fff;
+        
+        .toggle-btn1 {
+            right: 250px;
+            top: 19px;
         }
-        .auth-buttons .register {
-            background-color: #e3f7f7;
-            color: #5cc2bf;
+        
+        .toggle-btn2 {
+            right: 110px;
+            top: 19px;
+        }
+        .sidebar button.active {
+            background-color: #5CC2BF; /* or your preferred highlight color */
+            color: white;
+        }
+        
+        .sidebar button.active i {
+            color: white;
         }
         .sidebar {
+            display:inline-flex;
+            flex-direction: column;
+            background-color: #fff;
+            justify-content: space-between;
+            padding: 10px;
+            border-radius: 10px;
+            margin-left: 10px; /* Distance between sidebar and left end of the screen */
             width: 80px;
-            background-color: #5cc2bf;
-            padding: 20px 0;
-            position: fixed;
-            top: 100px;
-            height: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            border-radius: 20px;
-            margin-left: 20px;
-        }
-        .sidebar .menu-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #000;
-            font-size: 12px;
+            height: 200px;
+            background-color: #D5EAE9;
+            border: none;
+           
+            margin-top: 50px; /* Keep the distance from the top */
             cursor: pointer;
+            text-align: left;
+            font-weight: bold;
+            border-radius: 10px;
+            margin-right: 10px;
         }
-        .sidebar .menu-item.active {
-            background-color: #e3f7f7;
-            color: #000;
-            padding: 10px 0;
-            width: 60px;
-            text-align: center;
+        
+        .sidebar-btn {
+            background-color: #D5EAE9;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 0 15px 0; /* Add bottom margin to create space between buttons */
+            cursor: pointer;
+            text-align: left;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        
+        .sidebar-btn.active {
+            background-color: #5CC2BF;
+            color: white;
+        }
+        
+        .sidebar-btn1, .sidebar-btn2,.sidebar-btn3, .sidebar-btn4 {
+            border: 1px solid #46c0bc;
+            background: none;
+            font-size: medium;
+            min-width: 80px;
+            min-height: 40px;
+            color: #000000;
+            transition: 0.8s;
+            overflow: hidden;
+            background-color: #fff;
             border-radius: 10px;
         }
+        .sidebar-btn1:hover,.sidebar-btn2:hover,.sidebar-btn3:hover,.sidebar-btn4:hover {
+            color: #fff;
+            background-color: #5CC2BF;
+            cursor: pointer;
+        }
+        
+        .sidebar-btn1::before, .sidebar-btn2::before,.sidebar-btn3::before, .sidebar-btn4::before {
+            content: "";
+            z-index: -1;
+            color: #fff;
+            background-color: #3498db;
+            transition: 0.8s;
+            top: 0;
+            border-radius: 0 0 50% 50%;
+        }
+        
+        .sidebar-btn1:hover::before, .sidebar-btn2:hover::before, .sidebar-btn3:hover::before, .sidebar-btn4:hover::before{
+            height: 180%;
+        }  
         .content {
-            margin-left: 120px;
-            padding: 20px;
-            margin-top: 80px;
+            display: inline-flex;
+            flex-direction: column;
+            margin-left: 8px;
+            padding: 50px ;
+            margin-top: 0; /* Ensure the content is aligned with the sidebar */
+            position: absolute;
+           top: 55px;
         }
         .tabs {
             display: flex;
@@ -107,6 +181,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: flex;
             gap: 20px;
+            height: 130px;
         }
         .search-box {
             background-color: #fff;
@@ -135,7 +210,7 @@
         }
         .input-container .icon {
             font-size: 20px;
-            color: #5cc2bf;
+            
             margin-right: 10px;
         }
         .opt-in-box {
@@ -167,6 +242,8 @@
             font-size: 16px;
             cursor: pointer;
             border-radius: 5px;
+            height: 90px;
+            justify-content: space-around;
         }
 
         .info-section {
@@ -190,22 +267,30 @@
         }
         .info-section .info-item i {
             font-size: 24px;
-            color: #5cc2bf;
+            color: #00796b;
             margin-bottom: 10px;
         }
+
 
         #calendar-icon {
             cursor: pointer;
         }
     </style>
 </head>
+</head>
 <body>
     <div class="header">
         <div class="logo">journey mate</div>
-        <div class="auth-buttons">
-            <button>SIGN IN</button>
-            <button class="register">REGISTER</button>
-            <div class="profile-icon"><i class="fas fa-user"></i></div>
+        <img id="img" alt="User Profile Icon" src="./components/user-profile-icon-free-vector.jpg" width="60" height="60">  
+            
+        <div class="hero">
+            <div class="form-box">
+                <div class="button-box">
+                    <div id="btn"></div>
+                    <button type="button" class="toggle-btn1" onclick="login()">Sign In</button>
+                    <button type="button" class="toggle-btn2" onclick="register()">Register</button>
+                </div>
+            </div>
         </div>
     </div>
     
@@ -215,7 +300,7 @@
             <i class="fas fa-plane"></i> Flight
         </button></a>
         <a href="train.html">
-            <button class="sidebar-btn2">
+            <button class="sidebar-btn2 active">
             <i class="fas fa-train"></i> Train
         </button></a>
         <a href="cab.html">
@@ -230,94 +315,130 @@
     
     <div class="content">
         <div class="tabs">
-            <div class="tab active">Book Train Tickets</div>
-            <div class="tab">Check PNR Status</div>
-            <div class="tab">Live Train Status</div>
+            <div class="tab active" onclick="showTab('book-tickets')">Book Train Tickets</div>
+            <div class="tab" onclick="showTab('check-pnr')">Check PNR Status</div>
+            <div class="tab" onclick="showTab('live-status')">Live Train Status</div>
+        </div>
+
+        <!-- Book Train Tickets Section -->
+        <div id="book-tickets" class="section" style="display: block;">
+            <div class="search-section">
+                <div class="search-box">
+                    <div class="input-container">
+                        <i class="fas fa-map-marker-alt icon"></i>
+                        <input id="from-input" type="text" placeholder="From">
+                    </div>
+                    <i class="fas fa-exchange-alt"></i>
+                    <div class="input-container">
+                        <i class="fas fa-map-marker-alt icon"></i>
+                        <input type="text" placeholder="To">
+                    </div>
+                    <div class="input-container">
+                        <i class="fas fa-calendar-alt icon" id="calendar-icon"></i>
+                        <input id="date-input" type="text" placeholder="Thu, 15 Aug 2024">
+                    </div>
+                </div>
+                <div class="opt-in-box">
+                    <label>
+                        <strong>FREE</strong><br>CANCELATION
+                        <input type="checkbox">
+                    </label>
+                    
+                </div>
+                <button>SEARCH</button>
+            </div>
+        </div>
+
+        <!-- Check PNR Section -->
+        <div id="check-pnr" class="section" style="display: none;">
+            <div class="search-section">
+                <div class="search-box">
+                    <div class="input-container">
+                        <i class="fas fa-ticket-alt icon"></i>
+                        <input id="pnr-input" type="text" placeholder="Enter PNR Number">
+                    </div>
+                </div>
+                <button onclick="checkPNR()">Check PNR</button>
+            </div>
+        </div>
+
+        <!-- Live Train Status Section -->
+        <div id="live-status" class="section" style="display: none;">
+            <div class="search-section">
+                <div class="search-box">
+                    <div class="input-container">
+                        <i class="fas fa-train icon"></i>
+                        <input id="train-input" placeholder="Enter the train number or name">
+                    </div>
+                    <button onclick="checkLiveTrainStatus()">Check Status</button>
+                </div>
+            </div>
         </div>
         
-        <div class="search-section">
-            <div class="search-box">
-                <div class="input-container">
-                    <i class="fas fa-map-marker-alt icon"></i>
-                    <input id="from-input" type="text" placeholder="From">
-                </div>
-                <i class="fas fa-exchange-alt"></i>
-                <div class="input-container">
-                    <i class="fas fa-map-marker-alt icon"></i>
-                    <input type="text" placeholder="To">
-                </div>
-                <div class="input-container">
-                    <i class="fas fa-calendar-alt icon" id="calendar-icon"></i>
-                    <input id="date-input" type="text" placeholder="Thu, 15 Aug 2024">
-                </div>
-            </div>
-            
-            <div class="opt-in-box">
-                <label>
-                    <strong>FREE</strong><br>CANCELATION
-                    <input type="checkbox">
-                </label>
-                <label>
-                    <strong>Zero Cancellation</strong>
-                    <br>Instant Refund
-                </label>
-            </div>
-            
-            <button>SEARCH</button>
-        </div>
     </div>
 
     <div class="info-section">
-        <h2>
-         IRCTC authorised Ticket Booking
-        </h2>
-        <p>
-         Book IRCTC Train Tickets on redRail and enjoy simple &amp; superfast booking process with no service fee + no payment gateway charge.
-        </p>
+        <h2>IRCTC authorised Ticket Booking</h2>
+        <p>Book IRCTC Train Tickets on redRail and enjoy simple & superfast booking process with no service fee + no payment gateway charge.</p>
         <div class="info-items">
-         <div class="info-item">
-          <i class="fas fa-handshake">
-          </i>
-          <p>
-           IRCTC Authorised Partner
-          </p>
-          <p>
-           Book your train tickets with confidence
-          </p>
-         </div>
-         <div class="info-item">
-          <i class="fas fa-rupee-sign">
-          </i>
-          <p>
-           Instant refunds on UPI payments
-          </p>
-          <p>
-           Get Instant Refunds on your UPI payments
-          </p>
-         </div>
-         <div class="info-item">
-          <i class="fas fa-headset">
-          </i>
-          <p>
-           Hassle free customer care
-          </p>
-          <p>
-           Get dedicated customer support for all your queries
-          </p>
-         </div>
-         <div class="info-item">
-          <i class="fas fa-check-circle">
-          </i>
-          <p>
-           Fastest confirmed booking experience
-          </p>
-         </div>
+            <div class="info-item">
+                <i class="fas fa-handshake"></i>
+                <p>IRCTC Authorised Partner</p>
+                <p>Book your train tickets with confidence</p>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-clock"></i>
+                <p>Instant Confirmation</p>
+                <p>Receive your ticket confirmation in seconds</p>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-shield-alt"></i>
+                <p>100% Secure Payment</p>
+                <p>All transactions are secure and protected</p>
+            </div>
         </div>
-       </div>
+    </div>
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
+        function checkPNR() {
+            const pnrNumber = document.getElementById('pnr-input').value;
+            if (pnrNumber) {
+                alert("Checking PNR Status for: " + pnrNumber);
+                // API integration can be done here
+            } else {
+                alert("Please enter a valid PNR number.");
+            }
+        }
+        function checkLiveTrainStatus() {
+            const trainNumberOrName = document.getElementById('train-input').value;
+            if (trainNumberOrName) {
+                alert("Checking Live Train Status for: " + trainNumberOrName);
+                // API integration can be done here
+            } else {
+                alert("Please enter a valid train number or name.");
+            }
+        }
+        
+
+        function showTab(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Show the selected section
+            document.getElementById(sectionId).style.display = 'block';
+
+            // Update tab active state
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`.tab[onclick="showTab('${sectionId}')"]`).classList.add('active');
+        }
+
         $(function() {
             $("#from-input").autocomplete({
                 source: function(request, response) {
@@ -332,11 +453,11 @@
                         }
                     });
                 },
-                minLength: 2 // Minimum length of query before suggestion starts
+                minLength: 2
             });
 
             $("#date-input").datepicker({
-                dateFormat: "D, dd M yy", // Adjust the format as needed
+                dateFormat: "D, dd M yy",
                 onSelect: function(dateText) {
                     $("#date-input").val(dateText);
                 }
@@ -346,6 +467,18 @@
                 $("#date-input").focus();
             });
         });
+    </script>
+    <script>
+        window.onload = function() {
+            const currentPage = window.location.pathname.split("/").pop();
+            const sidebarButtons = document.querySelectorAll('.sidebar button');
+        
+            sidebarButtons.forEach(button => {
+                if (button.closest('a').getAttribute('href') === currentPage) {
+                    button.classList.add('active');
+                }
+            });
+        };
     </script>
 </body>
 </html>

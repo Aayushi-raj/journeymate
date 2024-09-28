@@ -55,7 +55,7 @@
     position:absolute;
     width: 110px;
     height: 100%;
-    background: #7ed6f4;
+    background: #5CC2BF;
     border-radius: 30px;
     transition: 0.5s;
 }
@@ -85,7 +85,7 @@
     cursor: pointer;
     display: block;
     margin:auto;
-    background:  #7ed6f4;
+    background:  #5CC2BF;
     border: 0;
     outline:none;
     border-radius: 10px;

@@ -22,7 +22,7 @@
     <section class="booking-section">
         <div class="sidebar">
             <a href="homepage.html">
-            <button class="sidebar-btn1">
+                <button class="sidebar-btn1 active">
                 <i class="fas fa-plane"></i> Flight
             </button></a>
             <a href="train.html">
@@ -153,6 +153,19 @@
         function register() {
             window.location.href = "signup.html"; 
         }
+    </script>
+    <script>
+        window.onload = function() {
+            const currentPage = window.location.pathname.split("/").pop();
+            const sidebarButtons = document.querySelectorAll('.sidebar button');
+        
+            sidebarButtons.forEach(button => {
+                if (button.closest('a').getAttribute('href') === currentPage) {
+                    button.classList.add('active');
+                }
+            });
+        };
+        
     </script>
 </body>
 </html>

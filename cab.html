@@ -2,7 +2,6 @@
 <head>
     <title>Journey Mate</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://fonts.cdnfonts.com/css/samarkan" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Petrona:wght@400;500;600&display=swap" rel="stylesheet">
@@ -14,6 +13,11 @@
             padding: 0;
             background-color: #fff;
         }
+        #img {
+            position: absolute;
+            top: 19px;
+            right: 20px;
+        }
         .header {
             display: flex;
             justify-content: space-between;
@@ -22,45 +26,45 @@
             border-bottom: 1px solid #ccc;
         }
         .logo {
+             
             font-size: 36px;
-            color: #7fc7d9;
+            color: #5cc2bf; /* Updated color */
             font-family: 'Samarkan', sans-serif;
-        }
-        .auth-buttons {
+            }
+        
+        .button-box{
             display: flex;
             gap: 10px;
             align-items: center;
         }
-        .auth-buttons button {
-            background-color: #92D1D4;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
+       
+        .button-box .toggle-btn1:hover {
+            background-color: #319795; /* Updated hover color */
+            color: #fff;
+        }
+        .button-box .toggle-btn2:hover {
+            background-color: #319795; /* Updated hover color */
+            color: #fff;
+        }
+        .toggle-btn1,
+        .toggle-btn2 {
+            padding: 10px 30px;
             cursor: pointer;
-            color: #fff;
-            font-family: 'Anonymous Pro', monospace;
-            border-radius: 5px; /* Adjusted to match the screenshot */
-        }
-        .auth-buttons button:hover {
-            background-color: #7fc7d9;
-            color: #fff;
-        }
-        .auth-buttons .register {
-            background-color: #e6f7f9;
-            color: #92D1D4;
-        }
-        .profile-icon {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
+            color: #319795;
+            border: 1px solid #319795;
             background-color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #000;
-            font-size: 18px;
-            margin-left: 10px;
-            border: 1px solid #000;
+            
+            border-radius: 0.25rem;
+            position: absolute;
+            top: 40px;
+        }
+        
+        .toggle-btn1 {
+            right: 250px;
+        }
+        
+        .toggle-btn2 {
+            right: 110px;
         }
         .sidebar {
             width: 80px;
@@ -211,6 +215,14 @@
             background-color: #000;
             z-index: -1;
         }
+        .sidebar button.active {
+            background-color: #5CC2BF; /* or your preferred highlight color */
+            color: white;
+        }
+        
+        .sidebar button.active i {
+            color: white;
+        }
         .sidebar {
             display: flex;
             flex-direction: column;
@@ -273,12 +285,41 @@
 <body>
     <div class="header">
         <div class="logo">journey mate</div>
-        <div class="auth-buttons">
-            <button>SIGN IN</button>
-            <button class="register">REGISTER</button>
-            <img id="img" alt="User Profile Icon" src="./components/user-profile-icon-free-vector.jpg" width="60" height="60">  
+        <img id="img" alt="User Profile Icon" src="./components/user-profile-icon-free-vector.jpg" width="60" height="60">  
             
+        <div class="hero">
+            <div class="form-box">
+                <div class="button-box">
+                    <div id="btn"></div>
+                    <button type="button" class="toggle-btn1" onclick="login()">Sign In</button>
+                    <button type="button" class="toggle-btn2" onclick="register()">Register</button>
+                </div>
+            </div>
         </div>
+    </section>
+
+    <script>
+        function login() {
+            window.location.href = "signup.html"; 
+        }
+        function register() {
+            window.location.href = "signup.html"; 
+        }
+    </script>
+    <script>
+        window.onload = function() {
+            const currentPage = window.location.pathname.split("/").pop();
+            const sidebarButtons = document.querySelectorAll('.sidebar button');
+        
+            sidebarButtons.forEach(button => {
+                if (button.closest('a').getAttribute('href') === currentPage) {
+                    button.classList.add('active');
+                }
+            });
+        };
+        
+    </script>
+    </div>
     </div>
     <div class="sidebar">
         <a href="homepage.html">
@@ -290,7 +331,7 @@
             <i class="fas fa-train"></i> Train
         </button></a>
         <a href="cab.html">
-        <button class="sidebar-btn3">
+        <button class="sidebar-btn3 active">
             <i class="fas fa-taxi"></i> Cab
         </button></a>
         <a href="bus.html">
