@@ -7,17 +7,18 @@ body {
     color: #333;
 }
 
-#header {
-    font-family: 'Samarkan', sans-serif;
+.header {
     font-size: 36px;
-    color: #7fc7d9;
+    color: #5cc2bf;
+    font-family: 'Samarkan', sans-serif;
     
 }
+
 
 /* Image */
 #img {
     position: absolute;
-    top: 19px;
+    top: 10px;
     right: 20px;
 }
 
@@ -36,10 +37,12 @@ body {
 
 .toggle-btn1 {
     right: 250px;
+    top: 30px;
 }
 
 .toggle-btn2 {
     right: 110px;
+    top: 30px;
 }
 
 .booking-form {
